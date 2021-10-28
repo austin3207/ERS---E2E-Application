@@ -1,0 +1,41 @@
+label {
+    display: block;
+    font: .9rem 'Fira Sans', sans-serif;
+}
+
+input[type='submit'],
+label {
+    margin-top: 1rem;
+}
+.center {
+	margin:auto;
+	width: 20%;
+	height: 100%; 
+	padding:50px;
+}
+header {
+	background-color:#17a2b8;
+    padding: 2px 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+
+body {
+	min-height: 80vh;		
+}
+.table{
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	
+	
+}
+form{
+	margin:auto;
+	width:300px;
+}
+div.claim-table{
+	text-align: center;
+	margin-top: 70px;
+	margin-bottom: 30px;
+}

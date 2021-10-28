@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="app.css">	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>		
+	<Title>Employee Claims</Title>
+	
+</head>
+
+<header>
+	<h1>Employee Claims :</h1>
+</header>
+<body>
+
+<!--     <form action="/new-claim" method="post"> -->
+<!--         <label for="Claim Amount">Claim Amount: </label><br> -->
+<!--         <input type="text" id="claim_amount" name="claim_amount"><br> -->
+<!--         <label for="claim_reason">Reason: </label><br> -->
+<!--         <textarea id= "claim_reason" name="claim_reason" rows="5" cols="50"></textarea> -->
+<!--         <input type="submit" value="Submit"> -->
+<!--     </form> -->
+    <div class="claim-table">
+        <h2>Approve/Deny Claims</h2>
+    </div>
+	
+    <table class="table table-striped">
+        <tr class="bg-info">
+            <th>Claim ID</th>
+            <th>Employee</th>
+            <th>Amount</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Confirm</th>
+        </tr>
+        <tbody id="myTable">
+
+        </tbody>
+    </table>
+	<div class="claim-table">
+        <h2>Processed Claims</h2>
+    </div>
+	
+    <table class="table table-striped">
+        <tr class="bg-info">
+            <th>Claim ID</th>
+            <th>Employee</th>
+            <th>Amount</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+        <tbody id="newTable">
+
+        </tbody>
+    </table>
+	
+	<script>
+        var username = document.cookie.match('(^|;)\\s*' + "user_name" + '\\s*=\\s*([^;]+)')?.pop() || ''
+        
+		buildTable(username)
+		
+		
+		function buildTable(username){
+			var table = document.getElementById('myTable')
+			var table2 = document.getElementById('newTable')
+			var claimURL = 'http://localhost:7000/claims/'
+			
+			$.getJSON(claimURL, function(data) {
+		        for(var i = 0; i < data.length; i++){
+		        	if(data[i].claim_status == 'Pending'){
+		        	var row = `<tr id=${i}>
+                                    <td>${data[i].claim_id}</td>
+                                    <td>${data[i].userName}</td>
+                                    <td>${data[i].claim_amount}</td>
+                                    <td>${data[i].claim_reason}</td>
+                                    <td>${data[i].claim_status}</td>
+                                    <td>
+                                        <button type= 'button' class='btn btn-success' name='".$selectedradio[x]."' id='approve' onClick='updateApproval()'>Approve</button>
+                                        <button type= 'button' class='btn btn-danger' name='".$selectedradio[x]."' id='deny' onClick='updateDenial()'>Reject</button>
+                                    </td>
+                              </tr>`
+                    table.innerHTML += row   
+		        	}
+		        	else{
+		        		var row2 = `<tr id=${i}>
+                            	<td>${data[i].claim_id}</td>
+                            	<td>${data[i].userName}</td>
+                            	<td>${data[i].claim_amount}</td>
+                            	<td>${data[i].claim_reason}</td>
+                            	<td>${data[i].claim_status}</td>
+                      		</tr>`
+            			table2.innerHTML += row2 
+		        	}
+		        }
+		        
+		    })
+		}
+    function updateApproval(){
+       var id = event.target.parentNode.parentNode;
+       let claim = id.getElementsByTagName("td");
+       
+       console.log();
+       $.post( "/update-claim", { claim_id: claim[0].innerText, approval: "Approved"} );
+       location.reload();
+    }    
+	function updateDenial(){
+		var id = event.target.parentNode.parentNode;
+	    let claim = id.getElementsByTagName("td");
+	       
+	    console.log();
+	    $.post( "/update-claim", { claim_id: claim[0].innerText, approval: "Denied"} );
+		location.reload();
+	}
+	</script>
+	
+
+</body>

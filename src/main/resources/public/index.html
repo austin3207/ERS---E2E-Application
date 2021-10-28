@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">	
+	<link rel="stylesheet" href="app.css">		
+	<Title>Reimbursement Login</Title>
+	
+</head>
+
+<header>
+	<h1>Reimbursement Login</h1>
+</header>
+
+<body>
+	<div class="center" style="width: 281px; ">	
+		<form method="post" id="employee.html"action="/check-credentials">
+			<label for="username">Username:</label> 
+			<input type="text" id="username" name="name" required
+       		minlength="1" maxlength="20" size="20">
+			<br>
+			<label for="pass">Password: </label>
+			<input type="password" id="pass" name="password" required
+       		minlength="4" required>
+			<br>
+			
+			<input type="submit" value="Sign in">
+		</form>
+	</div>
+</body>
+</html>
