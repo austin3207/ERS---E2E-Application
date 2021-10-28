@@ -11,20 +11,22 @@ import io.javalin.http.staticfiles.Location;
 
 public class App {
 
-	Logger logger = LoggerFactory.getLogger(App.class);
+	
 
 	public static void main(String[] args) {
+		
+		Logger log= LoggerFactory.getLogger(App.class);
 		// TODO Auto-generated method stub
 		Javalin app = Javalin.create(config -> {
 		    config.addStaticFiles("/public", Location.CLASSPATH); 
 		    config.enableCorsForAllOrigins();})   
 			.start(7000);
-		
+		log.info("App has started");
 		//creates endpoints in javalin
 		
-		app.get("welcome", ctx->ctx.html("<h1>Welcome to Javalin</h1>"));
+		//app.get("welcome", ctx->ctx.html("<h1>Welcome to Javalin</h1>"));
 		
-		app.get("somedata/{name}", ctx->ctx.html("<h1>Welcome " + ctx.pathParam("name") +" to Javalin.</h1>"));
+		//app.get("somedata/{name}", ctx->ctx.html("<h1>Welcome " + ctx.pathParam("name") +" to Javalin.</h1>"));
 		app.get("/users/{userName}", EmployeeController.fetchByUsername);
 		app.get("/users", EmployeeController.fetchAllUsernames);
 		

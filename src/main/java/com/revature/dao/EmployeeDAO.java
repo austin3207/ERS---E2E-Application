@@ -43,6 +43,13 @@ public class EmployeeDAO {
 		return employee;
 	}
 	public void setEmployeesDB() throws Exception {
-		employeesDB = DBConnection.findAllEmployees();
+		
+		try {
+			employeesDB = DBConnection.findAllEmployees();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			employeesDB = employees;
+			e.printStackTrace();
+		}
 	}
 }
