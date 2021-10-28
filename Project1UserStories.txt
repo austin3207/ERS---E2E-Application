@@ -1,0 +1,11 @@
+Project 1 User Stories
+
+1. Employees can make a reimbursement claim
+
+2. Employees can view the status of their previous claims
+
+3. Managers can view all claims
+
+4. Managers can approve or deny pending claims
+
+5. All members should be able to log in to the application
