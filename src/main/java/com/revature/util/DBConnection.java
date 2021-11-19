@@ -22,9 +22,9 @@ public class DBConnection {
 	
 	public static void connect() throws Exception{
 		Class.forName("org.postgresql.Driver");
-		String url = "jdbc:postgresql://database-1.chvxwgszfvm3.us-east-2.rds.amazonaws.com:5432/postgres";
-		String username = "postgres";
-		String password = "password";
+		String url = "jdbc:postgresql://"; //DB Connection
+		String username = "postgres"; //DB Username
+		String password = "password"; //DB Password
 		connection = DriverManager.getConnection(url, username, password);
 				
 	}
