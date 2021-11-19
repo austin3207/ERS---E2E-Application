@@ -20,6 +20,7 @@ Responsibiities
   - Creation of Database Tables for Accounts and Claims
   - Establishment and management of the DB connection using JDBC
   - Creation of REST endpoints with the help of Javalin
+  - Logging of relevant actions using slf4j
 
   - User Interface features
     - Login and Registration forms
@@ -34,4 +35,5 @@ Technology
   - HTML, CSS
   - JDBC, MySQL
   - JUnit
+  - slf4j
   - Selenium
