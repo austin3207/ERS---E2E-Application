@@ -4,7 +4,7 @@ This is my Project1 app which allows Employees to make and access their Reimburs
 Managers are able to approve or deny pending claims as well as view old claims.
 
 Running the application requires a MySQL DB connection with tables that conform to the
-models used. The frontend currently runs on http://localhost:7000 by default.
+models used. The application currently runs locally on http://localhost:7000 by default.
 
 Features:
   - Login Functionality
