@@ -33,4 +33,5 @@ Technology
   - Javalin
   - HTML, CSS
   - JDBC, MySQL
+  - JUnit
   - Selenium
